@@ -6,6 +6,8 @@ from PIL import Image
 import pandas as pd
 import json
 
+from mri_image import MriImage
+
 IMAGES_ROOT = "MRI_FILES/IMAGES/"
 RENDERED_ROOT = "MRI_FILES/RENDERED/"
 
@@ -70,6 +72,11 @@ def full_info_load(images_root=IMAGES_ROOT, rendered_root=RENDERED_ROOT):
             }
         )
     return infos
+
+
+files = get_files()
+ds = files[0][0]
+mri_ds = MriImage(dicom_dataset=ds)
 
 
 infos = full_info_load()
